@@ -133,6 +133,7 @@ def agarra_la_pala(sexo: str, edad: int) -> str:
 
 # EJERCICIO 6:
 
+
 def ej6_contar_hasta_10():
     contador: int = 1
     while contador <= 10:
@@ -166,7 +167,7 @@ def ej6_viaje_tiempo(year_partida: int, year_llegada: int):
     year_actual = year_partida
     while year_llegada < year_actual:
         year_actual -= 1
-        print(f"“Viajó un año al pasado, estamos en el añoo: {year_actual}")
+        print(f"“Viajó un año al pasado, estamos en el año: {year_actual}")
 
 
 def ej6_viaje_tiempo_aristoteles(year_partida: int):
@@ -175,7 +176,7 @@ def ej6_viaje_tiempo_aristoteles(year_partida: int):
     year_actual = year_partida
     while -384 + 10 < year_actual:
         year_actual -= 20
-        print(f"“Viajó un año al pasado, estamos en el añoo: {year_actual}")
+        print(f"“Viajó un año al pasado, estamos en el año: {year_actual}")
 
 
 # Alternativa:
@@ -185,7 +186,7 @@ def ej6_viaje_tiempo_aristoteles_BIS(year_partida: int):
     year_actual = year_partida
     while abs(-384 - year_actual) >= 10:
         year_actual -= 20
-        print(f"“Viajó un año al pasado, estamos en el añoo: {year_actual}")
+        print(f"“Viajó un año al pasado, estamos en el año: {year_actual}")
 
 
 # EJERCICIO 7:
@@ -214,12 +215,11 @@ def cuenta_regresiva(n: int):
 def viaje_tiempo(year_partida: int, year_llegada: int):
     # Requiere (year_llegada < year_partida)
     for i in range(year_partida, year_llegada, -1):
-        print(f"“Viajó un año al pasado, estamos en el añoo: {i - 1}")
+        print(f"“Viajó un año al pasado, estamos en el año: {i - 1}")
 
 
 def viaje_tiempo_aristoteles(year_partida: int):
     # Requiere (year_llegada < year_partida)
     # OBS: Año más cercano que sea más lejano a -384 es +-10
     for i in range(year_partida, -384 + 10, -20):
-    #while -384 + 10 < year_actual:
-        print(f"“Viajó un año al pasado, estamos en el añoo: {i - 20}")
+        print(f"“Viajó un año al pasado, estamos en el año: {i - 20}")
