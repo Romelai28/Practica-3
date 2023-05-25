@@ -1,10 +1,10 @@
 -- Completar con los datos del grupo
 --
--- Nombre de Grupo: Anonimo
--- Integrante 1: Anonimo
--- Integrante 2: Anonimo
--- Integrante 3: Anonimo
--- Integrante 4: Anonimo
+-- Nombre de Grupo: Anónimo
+-- Integrante 1: -
+-- Integrante 2: -
+-- Integrante 3: -
+-- Integrante 4: -
 
 module Solucion where
 
