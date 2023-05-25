@@ -40,21 +40,20 @@ def papelGanaAPiedra(j1: str, j2: str) -> bool:
 
 
 # Tests #
-
-print("\nj1: Piedra")
-print(quienGana("Piedra", "Piedra"))
-print(quienGana("Piedra", "Papel"))
-print(quienGana("Piedra", "Tijera"))
-
-print("\nj1: Papel")
-print(quienGana("Papel", "Piedra"))
-print(quienGana("Papel", "Papel"))
-print(quienGana("Papel", "Tijera"))
-
-print("\nj1: Tijera")
-print(quienGana("Tijera", "Piedra"))
-print(quienGana("Tijera", "Papel"))
-print(quienGana("Tijera", "Tijera"))
+# print("\nj1: Piedra")
+# print(quienGana("Piedra", "Piedra"))
+# print(quienGana("Piedra", "Papel"))
+# print(quienGana("Piedra", "Tijera"))
+#
+# print("\nj1: Papel")
+# print(quienGana("Papel", "Piedra"))
+# print(quienGana("Papel", "Papel"))
+# print(quienGana("Papel", "Tijera"))
+#
+# print("\nj1: Tijera")
+# print(quienGana("Tijera", "Piedra"))
+# print(quienGana("Tijera", "Papel"))
+# print(quienGana("Tijera", "Tijera"))
 
 
 if __name__ == '__main__':
