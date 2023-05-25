@@ -1,6 +1,7 @@
 import sys
 
-def quienGana(j1: str, j2: str) -> str : 
+
+def quienGana(j1: str, j2: str) -> str:
     #Implementar esta funcion
     if gana(j1, j2):
         return "Jugador1"
@@ -11,43 +12,49 @@ def quienGana(j1: str, j2: str) -> str :
 
 
 def gana(j1: str, j2: str) -> bool:
-   if piedraGanaAtijera(j1, j2) or tijeraGanaAPapel(j1, j2) or papelGanaAPiedra(j1, j2):
-      return True
-   else:
-      return False
+    if piedraGanaAtijera(j1, j2) or tijeraGanaAPapel(j1, j2) or papelGanaAPiedra(j1, j2):
+        return True
+    else:
+        return False
+
 
 def piedraGanaAtijera(j1: str, j2: str) -> bool:
     if j1 == "Piedra" and j2 == "Tijera":
-       return True
+        return True
     else:
-       return False
-    
+        return False
+
+
 def tijeraGanaAPapel(j1: str, j2: str) -> bool:
     if j1 == "Tijera" and j2 == "Papel":
-       return True
+        return True
     else:
-       return False
-    
+        return False
+
+
 def papelGanaAPiedra(j1: str, j2: str) -> bool:
     if j1 == "Papel" and j2 == "Piedra":
-       return True
+        return True
     else:
-       return False
+        return False
+
 
 # Tests #
-print("hgoasdad")
 
-quienGana("Piedra", "Piedra")
-quienGana("Piedra", "Papel")
-quienGana("Piedra", "Tijera")
+print("\nj1: Piedra")
+print(quienGana("Piedra", "Piedra"))
+print(quienGana("Piedra", "Papel"))
+print(quienGana("Piedra", "Tijera"))
 
-quienGana("Papel", "Piedra")
-quienGana("Papel", "Papel")
-quienGana("Papel", "Tijera")
+print("\nj1: Papel")
+print(quienGana("Papel", "Piedra"))
+print(quienGana("Papel", "Papel"))
+print(quienGana("Papel", "Tijera"))
 
-quienGana("Tijera", "Piedra")
-quienGana("Tijera", "Papel")
-quienGana("Tijera", "Tijera")
+print("\nj1: Tijera")
+print(quienGana("Tijera", "Piedra"))
+print(quienGana("Tijera", "Papel"))
+print(quienGana("Tijera", "Tijera"))
 
 
 if __name__ == '__main__':
