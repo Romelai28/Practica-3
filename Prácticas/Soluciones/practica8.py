@@ -2,14 +2,15 @@
 
 # Item 1:
 # Iterando por elemento en lista con for loop:
-def pertenece1(s: list[int], e: int) -> bool:
+def pertenece1(s: list, e) -> bool:
     for i in s:
         if i == e:
             return True
     return False
 
+
 # Iterando por indice de los elementos de lista con for loop:
-def pertenece2(s: list[int], e: int) -> bool:
+def pertenece2(s: list, e) -> bool:
     for i in range(len(s)):
         if s[i] == e:
             return True
@@ -17,9 +18,9 @@ def pertenece2(s: list[int], e: int) -> bool:
 
 
 # Iterando por indice de los elementos de lista con while loop:
-def pertenece3(s: list[int], e: int) -> bool:
+def pertenece3(s: list, e) -> bool:
     i = 0
-    while len(s) >  i:
+    while len(s) > i:
         print(i)
         if s[i] == e:
             return True
@@ -28,7 +29,7 @@ def pertenece3(s: list[int], e: int) -> bool:
 
 
 # Item 2:
-def divideATodos(s: list[int], e: int) -> bool:
+def divide_a_todos(s: list[int], e: int) -> bool:
     # Requiere: e != 0
     for i in s:
         if i % e != 0:
@@ -37,7 +38,7 @@ def divideATodos(s: list[int], e: int) -> bool:
 
 
 # Item 3:
-def sumaTotal(s: list[int]) -> int:
+def suma_total(s: list[int]) -> int:
     res: int = 0
     for i in s:
         res += i
@@ -51,6 +52,7 @@ def ordenados(s: list[int]) -> bool:
             return False
     return True
 
+
 # Item 5:
 def es_palabra_larga(palabra: str) -> bool:
     if len(palabra) > 7:
@@ -61,33 +63,33 @@ def es_palabra_larga(palabra: str) -> bool:
 
 # Item 6:
 def es_palindromo(palabra: str) -> bool:
-    return palabra == reverseString(palabra)
+    return palabra == reverse_string(palabra)
 
 
-def reverseString(l: list) -> str:
+def reverse_string(lista: list) -> str:
     res = ""
-    for i in range(len(l)):
-        res += l[len(l) - 1 - i]
+    for i in range(len(lista)):
+        res += lista[len(lista) - 1 - i]
     return res
 
 
 # Alternativo:
 def es_palindromoBIS(palabra: str) -> bool:
-    palabra_invertida = charlist_to_string(reverseList(palabra))
+    palabra_invertida = charlist_to_string(reverse_list(palabra))
     return palabra == palabra_invertida
 
 
-# OBS: Si le paso un string, me devuelve una lista de characteres.
-def reverseList(l: list) -> list:
+# OBS: Si le paso un string, me devuelve una lista de characters.
+def reverse_list(lista: list) -> list:
     res = []
-    for i in range(len(l)):
-        res.append(l[len(l) - 1 - i])
+    for i in range(len(lista)):
+        res.append(lista[len(lista) - 1 - i])
     return res
 
 
-def charlist_to_string(charList: list[str]) -> str:
+def charlist_to_string(char_list: list[str]) -> str:
     res = ""
-    for i in charList:
+    for i in char_list:
         res += i
     return res
 
@@ -139,7 +141,7 @@ def tiene_3_vocales_distintas(palabra: str) -> bool:
     vocales: list[str] = ['a', 'e', 'i', 'o', 'u']
     vocales_distintas: int = 0
     for vocal in vocales:
-        if pertenece1 (palabra, vocal):
+        if pertenece1(palabra, vocal):
             vocales_distintas += 1
             if vocales_distintas == 3:
                 return True
