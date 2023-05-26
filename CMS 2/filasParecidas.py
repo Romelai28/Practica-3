@@ -3,9 +3,19 @@ from typing import List
 # Aclaración: Debido a la versión de Python del CMS, para el tipo Lista, la sintaxis de la definición de tipos que deben usar es la siguiente:
 # l: List[int]  <--Este es un ejemplo para una lista de enteros.
 # Respetar esta sintaxis, ya que el CMS dirá que no pasó ningún test si usan otra notación.
-def filasParecidas(matriz: List[List[int]]) -> bool :
-  # Implementar esta funcion
-  return True
+
+
+def filasParecidas(matriz: List[List[int]]) -> bool:
+    # Implementar esta funcion
+    if len(matriz) < 2:
+        return True
+    longitud_fila = len(matriz[0])
+    n_candidato = matriz[1][0] - matriz[0][0]
+    for i in range(len(matriz) - 1):  # Itera por filas de la matriz
+        for j in range(longitud_fila):  # Itera por elemento de la fila
+            if matriz[i][j] + n_candidato != matriz[i + 1][j]:
+                return False
+    return True
 
 
 if __name__ == '__main__':
