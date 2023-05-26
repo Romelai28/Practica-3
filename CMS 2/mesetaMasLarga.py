@@ -5,7 +5,7 @@ from typing import List
 # Respetar esta sintaxis, ya que el CMS dirá que no pasó ningún test si usan otra notación.
 
 
-def mesetaMasLarga(l: List[int]) -> int :
+def mesetaMasLarga(l: List[int]) -> int:
     # Implementar esta funcion
     lista_cantidad_repeticiones: List[int] = []
     if len(l) < 2:
