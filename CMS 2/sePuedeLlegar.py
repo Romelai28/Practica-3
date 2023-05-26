@@ -14,9 +14,10 @@ def sePuedeLlegar(origen: str, destino: str, vuelos: List[Tuple[str, str]]) -> i
     while ciudad_actual != destino:
         contador_de_viajes_antiguo = contador_de_viajes
         for i in range(len(vuelos)):
-            if ciudad_actual == vuelos[i][0] and vuelos[i][0] != vuelos[i][1]:
+            if ciudad_actual == vuelos[i][0]:
                 ciudad_actual = vuelos[i][1]  # Hacer el viaje
                 contador_de_viajes += 1
+                vuelos.pop(i)  # Evita bucles, rutas circulares.
                 break
         if contador_de_viajes == contador_de_viajes_antiguo:  # Significa que no pudo hacer ningún viaje, fin del camino
             return -1
