@@ -2,7 +2,7 @@
 
 # Item 1:
 # Iterando por elemento en lista con for loop:
-def pertenece1(s: list, e) -> bool:
+def pertenece(s: list, e) -> bool:
     for i in s:
         if i == e:
             return True
@@ -66,10 +66,10 @@ def es_palindromo(palabra: str) -> bool:
     return palabra == reverse_string(palabra)
 
 
-def reverse_string(lista: list) -> str:
+def reverse_string(texto: str) -> str:
     res = ""
-    for i in range(len(lista)):
-        res += lista[len(lista) - 1 - i]
+    for i in range(len(texto)):
+        res += texto[len(texto) - 1 - i]
     return res
 
 
@@ -106,7 +106,7 @@ def analisis_password(password: str) -> str:
 
 def tiene_numero(password: str) -> bool:
     for i in range(0, 10):
-        if pertenece1(password, str(i)):
+        if pertenece(password, str(i)):
             return True
     return False
 
@@ -141,7 +141,7 @@ def tiene_3_vocales_distintas(palabra: str) -> bool:
     vocales: list[str] = ['a', 'e', 'i', 'o', 'u']
     vocales_distintas: int = 0
     for vocal in vocales:
-        if pertenece1(palabra, vocal):
+        if pertenece(palabra, vocal):
             vocales_distintas += 1
             if vocales_distintas == 3:
                 return True
@@ -149,3 +149,153 @@ def tiene_3_vocales_distintas(palabra: str) -> bool:
 
 
 # EJERCICIO 2:
+
+
+# Item 1:
+def cerosEnPosParInOut(l:list[float]):
+    # l inout
+    for i in range(len(l)):
+        if i % 2 == 0:
+            l[i] = 0
+
+# asd = [1,2,3,4,5,6]
+# print(asd)
+# cerosEnPosParInOut(asd)
+# print(asd)
+
+
+# Item 2:
+def cerosEnPosParIn(l:list[float]):
+    # l in
+    y: list[float] = l.copy()
+    for i in range(len(y)):
+        if i % 2 == 0:
+            y[i] = 0
+    return y
+
+# asd = [1,2,3,4,5,6]
+# print(asd)
+# cerosEnPosParIn(asd)
+# print(cerosEnPosParIn(asd))
+# print(asd)
+
+
+# Item 3:
+def sacarVocales(textoOriginal: str) -> str:
+    # textoOriginal in
+    textoRes: str = ""
+    vocales: list[str] = ["a", "e", "i", "o", "u", "A", "E", "I", "O", "U"]
+    for letra in textoOriginal:
+        if not (letra in vocales):
+            textoRes += letra
+    return textoRes
+
+
+# Item 4:
+def remplazaVocales(s: str) -> str:
+    # s in
+    vocales: list = ["a", "e", "i", "o", "u"]  # La especificación solo habla de minusculas.
+    res: str = ""
+    for letra in s:
+        if not (letra in vocales):
+            res += letra
+        else:
+            res += " "
+    return res
+
+
+# Item 5:
+# OBS: Ya lo había hecho en el ejercicio 1 item 6
+def daVueltaStr(s: str) -> str:
+    # s in
+    res = ""
+    for i in range(len(s)):
+        res += s[len(s) - 1 - i]
+    return res
+
+
+# EJERCICIO 3:
+
+
+# Item 1:
+def estudiantes():
+    res: list[str] =  []
+    condicion: bool = True
+    while condicion:
+        nombre: str = ""  # Limpiar
+        nombre = input("'listo' para salir. Ingrese nombre del estudiante: ")
+        if nombre == "listo":
+            condicion = False
+        else:
+            res.append(nombre)
+    return res
+
+
+# Item 2:
+def historialSube():
+    res: list[(str, int)] = []
+    operacion: str = ""
+    while operacion != "X":
+        operacion = input("Ingrese operación: ")
+        if operacion == "C" or operacion == "D":
+            monto: int = input("Ingrese monto de la operación: ")
+            res.append((operacion, monto))
+    return res
+
+
+# Item 3:
+import random
+
+
+def juego():
+    historial: list[int] = []
+    seguirJugando: bool = True
+    while seguirJugando:
+        decision = input ("Desea otra carta? ('Si'/'No'): ")
+        if decision == "Si":
+            historial.append(repartir())
+            if sumaMano(historial) > 7.5:
+                seguirJugando = False
+        else:
+            seguirJugando = False
+        # print(historial)
+    return historial
+
+
+def repartir() -> int:
+    cartas: list[int] = [1,2,3,4,5,6,7,10,11,12]
+    return random.choice(cartas)
+
+def sumaMano(cartas: list[int]) -> int:
+    # cartas in
+    res: int = 0
+    for carta in cartas:
+        if carta < 8:
+            res += carta
+        else:
+            res += 0.5
+    return res
+
+
+# EJERCICIO 4:
+
+
+# Item 1:
+def perteneceACadaUno(s:list[list[int]], e: int, res: list[bool]):
+    # s in
+    # e in
+    # res out
+    res.clear()  # Limpiar res pero no pierde referencia con la lista parametro.
+    for fila in s:
+        if pertenece(fila, e):
+            res.append(True)
+        else:
+            res.append(False)
+
+
+# asd = [False, False, False]
+# perteneceACadaUno([[1,2,3],[2,3,4],[3,4,5]], 2, asd)
+# print(asd)
+
+
+# Item 2:
