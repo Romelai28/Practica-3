@@ -299,3 +299,47 @@ def perteneceACadaUno(s:list[list[int]], e: int, res: list[bool]):
 
 
 # Item 2:
+def esMatriz(s: list[list[int]]):
+    # s in
+    if len(s) == 0 or len(s[0]) == 0:
+        return False
+    for fila in s:
+        if len(fila) != len(s[0]):
+            return False
+    return True
+
+
+# Item 3:
+def filasOrdenadas(m: list[list[int]]) -> list[bool]:
+    # m in; res out
+    res: list [bool] = []
+    for fila in m:
+        res.append(ordenados(fila))
+    return res
+
+
+# print(filasOrdenadas([[1,2,3],[3,2,1],[1,2,2]]))
+
+
+# Item 4:
+import numpy as np
+
+
+def crearMatrizDeCerosCuadrada(d: int) -> list[list[int]]:
+    res: list[list[int]] = []
+    for i in range(d):
+        res.append([])
+        for j in range(d):
+            res[i].append(0)
+    return res
+
+
+def multiplicarMatrices(d: int, p:int) -> list[list[float]]:  # La especificación decia que p sea un float pero no tiene sentido.
+    matriz = np.random.random((d, d))  # OBS: Es matriz cuadrada.
+    res = crearMatrizDeCerosCuadrada(d)
+    for potencia in range(p):
+        for fila in range(len(matriz)):
+            for elemento in range(len(matriz[0])):
+                for n in range(d):
+                    res[fila][elemento] += matriz[fila][n] * matriz[n][elemento]
+    return res
