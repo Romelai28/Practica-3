@@ -317,7 +317,7 @@ maximoEntre a b  | a >= b = a
 
 nEsimoPrimo :: Integer -> Integer
 -- Requiere: n perteneciente a los naturales sin incluir al cero.
-nEsimoPrimo n = auxiliarNEsimoPrimo 1 n
+nEsimoPrimo n = auxiliarNEsimoPrimo 2 n  -- OBS: El 1 no es primo, si quiero que sea primo cambio el 2 con un 1.
 
 
 auxiliarNEsimoPrimo :: Integer -> Integer -> Integer
@@ -365,12 +365,72 @@ auxiliarMayorDigitoEspecial n i rSalto | i <= rSalto = (-1)
 
 -- EJERCICIO 19 --
 
-       -- COMPLETAR, PENDIENTE --
+       -- ALTERNATIVA 1 -- (Mala)
+esSumaInicialDePrimosBIS :: Integer -> Bool
+-- Requiere: n perteneciente a los naturales incluyendo al cero.
+-- OBS: El 1 no es primo. Este cambio se ve en la función nEsimoPrimo.
+esSumaInicialDePrimosBIS n = auxiliarEsSumaInicialDePrimosBIS n 0 1
+
+auxiliarEsSumaInicialDePrimosBIS :: Integer -> Integer -> Integer -> Bool
+-- Requiere contador_primo perteneciente a los naturales sin incluir al cero.
+-- Requiere valor_deseado, valor_obtenido enteros.
+auxiliarEsSumaInicialDePrimosBIS valor_deseado valor_obtenido contador_primo | valor_deseado == valor_obtenido = True
+       | valor_deseado < valor_obtenido = False
+       | otherwise = auxiliarEsSumaInicialDePrimosBIS (valor_deseado) ((valor_obtenido + (nEsimoPrimo contador_primo))) (contador_primo + 1)
+
+
+       -- ALTERNATIVA 2 --
+esSumaInicialDePrimos :: Integer -> Bool
+-- Requiere: n perteneciente a los naturales incluyendo al cero.
+-- OBS: El 1 no es primo.
+esSumaInicialDePrimos 0 = True
+esSumaInicialDePrimos n = auxiliarEsSumaInicialDePrimos n 1
+
+auxiliarEsSumaInicialDePrimos :: Integer -> Integer -> Bool
+auxiliarEsSumaInicialDePrimos n m | n == sumaDeMPrimos m = True
+                                  | n < sumaDeMPrimos m = False
+                                  | otherwise = auxiliarEsSumaInicialDePrimos n (m+1)
+
+sumaDeMPrimos :: Integer -> Integer
+-- Requiere m perteneciente a los naturales sin incluir al cero.
+-- OBS: El 1 no es primo.
+sumaDeMPrimos m | m == 1 = 2
+                | otherwise = nEsimoPrimo m + sumaDeMPrimos (m - 1) 
 
 
 -- EJERCICIO 20 --
 
-       -- COMPLETAR, PENDIENTE --
+       -- ALTERNATIVA 1 -- (Mala)
+tomaValorMaxBIS :: Integer -> Integer -> Integer
+tomaValorMaxBIS n1 n2 = auxiliarTomaValorMaxBIS n1 n2 n1 0 0
+
+auxiliarTomaValorMaxBIS :: Integer -> Integer -> Integer -> Integer -> Integer -> Integer
+auxiliarTomaValorMaxBIS n1 n2 i m max_encontado | i == n2+1 = m
+                                                | sumaDivisores i > max_encontado = auxiliarTomaValorMaxBIS n1 n2 (i+1) i (sumaDivisores i)
+                                                | otherwise = auxiliarTomaValorMaxBIS n1 n2 (i+1) m (max_encontado)
+
+       -- ALTERNATIVA 2 --
+tomaValorMax :: Integer -> Integer -> Integer
+-- Requiere n1, n2 naturales tales que 1 <= n1 <= n2
+tomaValorMax n1 n2 = auxiliarTomaValorMax n1 n2 0
+
+auxiliarTomaValorMax :: Integer -> Integer -> Integer -> Integer
+-- Requiere i <= fin
+auxiliarTomaValorMax i fin m | i == fin + 1 = m
+                             | sumaDivisores i > sumaDivisores m = auxiliarTomaValorMax (i+1) fin i
+                             | otherwise = auxiliarTomaValorMax (i+1) fin m
+
+
+sumaDivisores :: Integer -> Integer
+-- Requiere n entero.
+sumaDivisores n = auxiliarSumaDivisores n n 
+
+auxiliarSumaDivisores :: Integer -> Integer -> Integer
+-- Requiere contador natural incluyendo al cero.
+-- Requiere n entero.
+auxiliarSumaDivisores n 0 = 0
+auxiliarSumaDivisores n contador | mod n contador == 0 = contador + (auxiliarSumaDivisores n (contador - 1))
+                                 | otherwise = auxiliarSumaDivisores n (contador - 1)
 
 
 -- EJERCICIO 21 --
