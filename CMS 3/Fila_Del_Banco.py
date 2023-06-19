@@ -4,7 +4,7 @@ from queue import Queue
 def avanzarFila(fila: Queue, min: int):
     #implementar función
     n: int = longitud_cola(fila)
-    minuto_de_entrada: int = -10 # Valor absurdo de inicialización
+    minuto_de_entrada: int = -10  # Valor absurdo de inicialización
 
     for minuto in range(min + 1):
         
