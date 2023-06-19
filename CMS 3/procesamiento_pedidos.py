@@ -9,10 +9,37 @@ import json
 def procesamiento_pedidos(pedidos: Queue,
                           stock_productos: Dict[str, int],
                           precios_productos: Dict[str, float]) -> List[Dict[str, Union[int, str, float, Dict[str, int]]]]:
-  
-  res = []
-  
-  return res
+    
+    pedidios_procesados: List[Dict[str, Union[int, str, float, Dict[str, int]]]] = []
+    
+    while not pedidos.empty():
+        # Inicialización del pedido.
+        pedido_actual: Dict[str, Union[int, str, float, Dict[str, int]]] = pedidos.get()
+        estado_del_pedido: str = "completo"
+        precio_total: float = 0
+
+        for producto, cantidad_comprada in pedido_actual["productos"].items():
+            
+            if cantidad_comprada <= stock_productos[producto]:  # Hay stock
+                precio_total += cantidad_comprada * precios_productos[producto]  # Cobrar
+                stock_productos[producto] -= cantidad_comprada  # Descontar del stock
+                
+            else:  # No hay stock
+                precio_total += stock_productos[producto] * precios_productos[producto]  # Cobrar
+                pedido_actual["productos"][producto] = stock_productos[producto]  # Cambiar la cantidad de productos que se lleva
+                stock_productos[producto] = 0  # Descontar del stock
+                estado_del_pedido = "incompleto"
+
+        registro_pedido_actual: Dict[str, Union[int, str, float, Dict[str, int]]] = {
+            "id": pedido_actual["id"],
+            "cliente": pedido_actual["cliente"] ,
+            "productos": pedido_actual["productos"],
+            "precio_total": precio_total,
+            "estado": estado_del_pedido
+          }
+        
+        pedidios_procesados.append(registro_pedido_actual)
+    return pedidios_procesados
 
 
 if __name__ == '__main__':
